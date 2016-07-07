@@ -1,0 +1,30 @@
+.block {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	margin-right: 30px;
+	background-color: red;
+}
+
+.wrapper {
+	padding: 20px;
+	background-color: green;
+}
+
+
+.menu {
+
+}
+
+.menu__item {
+	background-color: #ececec;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	float: left;
+}
+
+.delete {
+	float: right;
+	margin-right: 20px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+<!-- The #each helper iterates over an array of items. -->
+<script id="menuTemplate" type="text/x-handlebars-template">
+
+    {{#each items}}
+    <div class="menu__item">
+        <img id="ico" width="32px" height="32px" src="{{url}}/favicon.ico"> {{url}}
+        <button type="button" id="{{ id }}" class="btn btn-danger-outline delete">Delete</button>
+    </div>
+    {{/each}}
+
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+
+            <h1 class="display-4">Favicon Viewer</h1>
+
+            <div class="js-main-menu menu"></div>
+
+            <div class="input-group">
+                <input type="text" name="addMenuItem" id="addMenuItemInput" class="form-control" placeholder="Name">
+                    <span class="input-group-btn">
+                         <button class="btn btn-primary addMenuItemBtn" id="addMenuItemButton" type="button">Add new
+                             item
+                         </button>
+                    </span>
+            </div><!-- /input-group -->
+
+        </div>
+    </div>
+</div>
+
+<script src="lib/handlebars-v4.0.5.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript" src="post.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+
+</body>
+</html>
+
+
+<!--<div class="menu__item">1 <span class="close">X</span></div>-->
+<!--<div class="menu__item">2<span class="close">X</span></div>-->
+<!--<div class="menu__item">3<span class="close">X</span></div>-->
+<!--<div class="menu__item">4<span class="close">X</span></div>-->
