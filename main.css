@@ -28,3 +28,15 @@
 	float: right;
 	margin-right: 20px;
 }
+
+
+
+.menuTable td:last-child,
+.menuTable td:first-child{
+	width:1%;
+	white-space:nowrap;
+}
+
+.menuTable  td.title {
+	padding-left: 30px;
+}

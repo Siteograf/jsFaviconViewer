@@ -11,14 +11,30 @@
 <!-- The #each helper iterates over an array of items. -->
 <script id="menuTemplate" type="text/x-handlebars-template">
 
-    {{#each items}}
-    <div class="menu__item">
-        <img id="ico" width="32px" height="32px" src="{{url}}/favicon.ico"> {{url}}
-        <button type="button" id="{{ id }}" class="btn btn-danger-outline delete">Delete</button>
-    </div>
-    {{/each}}
+    <table class="menuTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+        {{#each items}}
+        <tr class="menu__item" itemId="{{ id }}">
+            <td class="ico"><img id="ico" width="32px" height="32px" src="{{url}}/favicon.ico"></td>
+            <td class="title"><span class="titleText">{{url}}</span></td>
+            <td class="control">
+                <button type="button" id="{{ id }}" class="btn btn-danger-outline delete">Delete</button>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
 
 </script>
+
+
+<script id="editTitleTemplate" type="text/x-handlebars-template">
+    <div class="input-group">
+        <input type="text" name="name1" class="form-control" value="{{title}}">
+        <span class="input-group-btn">
+            <button class="btn btn-primary saveButton">Save</button>
+        </span>
+    </div>
+</script>
+
 
 <div class="container">
     <div class="row">
@@ -28,7 +44,6 @@
         </div>
 
         <div class="col-sm-8">
-
 
             <div class="js-main-menu menu"></div>
 
@@ -46,7 +61,7 @@
         <div class="col-sm-4">
             <a href="https://github.com/Siteograf/jsFaviconViewer">Смотреть код на github.com</a>
 
-<hr/>
+            <hr/>
             <p>Ccылки для проверки</p>
             <ul>
                 <li>http://getbootstrap.com/</li>

@@ -14,7 +14,6 @@ class Menu {
     _buildMenu() {
         // Compile the template
         let theTemplate = Handlebars.compile(this.menuTemplate.innerHTML);
-
         // Add the compiled html to the page
         this.menuContainer.innerHTML = theTemplate(this.menuData);
     }
@@ -24,15 +23,17 @@ class Menu {
     }
 
     _onClick(event) {
-        if (event.target.classList.contains('menu__item')) {
+
+        if (event.target.classList.contains('titleText')) {
             this._onItemClick(event);
         }
 
         if (event.target.classList.contains('delete')) {
+            post.deletePost(event.target.id);
+        }
 
-            post.deletePost();
-
-            // this._onCloseItemClick(event);
+        if (event.target.classList.contains('saveButton')) {
+            this._saveItem();
         }
 
 
@@ -40,6 +41,28 @@ class Menu {
 
     _onItemClick(event) {
         console.log('Click on item', event.target);
+
+        let titleContainer = event.target.parentNode;
+
+        if (!titleContainer.classList.contains('inputInside')) {
+
+            titleContainer.classList.add('inputInside');
+            let title = titleContainer.querySelector('span');
+            let titleText = title.innerHTML;
+            title.style.display = 'none';
+
+            // Compile the template
+            let theTemplate = Handlebars.compile(editTitleTemplate.innerHTML);
+            // Add the compiled html to the page
+            titleContainer.innerHTML = theTemplate({title: titleText});
+        }
+//         titleContainer.classList.remove("title");
+    }
+
+    _saveItem() {
+        let postId = event.target.parentNode.parentNode.parentNode.parentNode.getAttribute('itemId');
+        let changedUrlValue = event.target.parentNode.previousElementSibling.value;
+        post.savePost(postId, changedUrlValue);
     }
 
     _onCloseItemClick(event) {

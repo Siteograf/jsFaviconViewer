@@ -19,15 +19,25 @@ class Post {
         menu.render();
     }
 
-    deletePost() {
-        delete this.source.items[this.findObjectNumber()];
+    deletePost(postId) {
+        console.log(postId);
+        delete this.source.items[this.findObjectNumber(postId)];
         menu.render();
     }
 
-    findObjectNumber() {
+    savePost(postId, changedUrlValue){
+        this.source.items[this.findObjectNumber(postId)].url = changedUrlValue;
+
+        console.log('URL ',this.source.items[this.findObjectNumber(postId)].url);
+        menu.render();
+    }
+
+    findObjectNumber(postId) {
         // Перебираем объект и возвращаем номер в объекте который совпал
         for (let i in  this.source.items) {
-            if (this.source.items[i].id == event.target.id) {
+            // console.log(this.source.items[i].id);
+            // console.log(event);
+            if (this.source.items[i].id == postId) {
                 console.log('Delete ', this.source.items[i], i);
                 return i;
             }
